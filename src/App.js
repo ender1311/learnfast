@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import openai from './api';
 import './App.css';
 import logo from './OpenAI_Logo.png';
@@ -6,9 +6,7 @@ import logo from './OpenAI_Logo.png';
 const App = () => {
   const [aiResponse, setAiResponse] = useState('');
   const [userInput, setUserInput] = useState('');
-  const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [newSuggestions, setNewSuggestions] = useState([]);
   const [subCategories, setSubCategories] = useState([]);
   const [firstSubmit, setFirstSubmit] = useState(false);
   const [showSubCategories, setShowSubCategories] = useState(false);
@@ -50,18 +48,10 @@ const App = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   setLoading(true);
-  setAiResponse('Loading...');
-
-
-  setSuggestions([]); // Clear previous suggestions
-  setNewSuggestions([]); // Clear previous new suggestions
-
-  setAiResponse('Loading...'); // Set loading message
 
   const { responseText, subCategories: fetchedSubCategories } = await fetchAiResponse(userInput);
   setAiResponse(responseText);
 
-  setNewSuggestions(fetchedSubCategories); // Set the new suggestions
   setSubCategories(fetchedSubCategories); // Update the subCategories state variable
 
   setLoading(false);
@@ -72,10 +62,7 @@ const handleSubmit = async (e) => {
     setShowSubCategories(true);
   }
 
-  // // Use async/await to wait for the above state updates to complete
-  // await new Promise((resolve) => setTimeout(resolve, 0));
 
-  // setUserInput(''); // Clear user input field
 };
 
 
@@ -96,7 +83,6 @@ const handleSubCategoryClick = async (subCategory) => {
   const handleReset = () => {
     setAiResponse('');
     setUserInput('');
-    setSuggestions([]);
     setShowSubCategories(false);
   };
 

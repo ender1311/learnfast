@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.eb2cc8f3.css",
-    "main.js": "/static/js/main.d6b6e2c0.js",
-    "static/js/787.bcfaa2a7.chunk.js": "/static/js/787.bcfaa2a7.chunk.js",
-    "static/media/OpenAI_Logo.png": "/static/media/OpenAI_Logo.86133e45aabc33df012b.png",
-    "index.html": "/index.html",
-    "main.eb2cc8f3.css.map": "/static/css/main.eb2cc8f3.css.map",
-    "main.d6b6e2c0.js.map": "/static/js/main.d6b6e2c0.js.map",
-    "787.bcfaa2a7.chunk.js.map": "/static/js/787.bcfaa2a7.chunk.js.map"
+    "main.css": "/learnfast/static/css/main.eb2cc8f3.css",
+    "main.js": "/learnfast/static/js/main.3f126b3b.js",
+    "static/js/787.bcfaa2a7.chunk.js": "/learnfast/static/js/787.bcfaa2a7.chunk.js",
+    "static/media/OpenAI_Logo.png": "/learnfast/static/media/OpenAI_Logo.86133e45aabc33df012b.png",
+    "index.html": "/learnfast/index.html",
+    "main.eb2cc8f3.css.map": "/learnfast/static/css/main.eb2cc8f3.css.map",
+    "main.3f126b3b.js.map": "/learnfast/static/js/main.3f126b3b.js.map",
+    "787.bcfaa2a7.chunk.js.map": "/learnfast/static/js/787.bcfaa2a7.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.eb2cc8f3.css",
-    "static/js/main.d6b6e2c0.js"
+    "static/js/main.3f126b3b.js"
   ]
 }

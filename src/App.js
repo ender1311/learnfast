@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import openai from './api';
+import api from './api';
 import './App.css';
 import logo from './OpenAI_Logo.png';
 
@@ -14,33 +14,20 @@ const App = () => {
 
   const fetchAiResponse = async (input) => {
     setLoading(true);
-    
 
-    const response = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: `User: ${input}\nAI:`,
-      max_tokens: 100,
-      temperature: 0.7,
-    });
+    const response = await api.createCompletion(`User: ${input}\nAI:`);
   
-    const subCategoryPrompt = `Please provide 3 sub-categories related to "${response.data.choices[0].text}" but each sub-category needs to be 3 words or less:\n1. `;
-    const subCategoryResponse = await openai.createCompletion({
-      model: 'text-davinci-003',
-      prompt: subCategoryPrompt,
-      max_tokens: 100,
-      n: 1,
-      temperature: 0.7,
-    });
+    const subCategoryPrompt = `Please provide 3 sub-categories related to "${response.choices[0].text}" but each sub-category needs to be 3 words or less:\n1. `;
+    const subCategoryResponse = await api.createCompletion(subCategoryPrompt);
   
-    const subCategories = subCategoryResponse.data.choices[0].text.split('\n')
+    const subCategories = subCategoryResponse.choices[0].text.split('\n')
       .filter((item) => item.trim() !== '') // Remove empty strings
       .map((item) => item.replace(/^\d+\.\s*/, '')); // Remove numbering
-    console.log(subCategories)
+    console.log(subCategories);
     
     setLoading(false);
 
-  
-    return { responseText: response.data.choices[0].text, subCategories };
+    return { responseText: response.choices[0].text, subCategories };
   };
   
 

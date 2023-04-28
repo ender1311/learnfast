@@ -1,9 +1,22 @@
-const { Configuration, OpenAIApi } = require("openai");
+import axios from 'axios';
 
-const configuration = new Configuration({
-  apiKey: process.env.REACT_APP_OPENAI_API_KEY,
+const openai = axios.create({
+  baseURL: 'http://localhost:5000/api',
+  headers: {
+    'Content-Type': 'application/json',
+  },
 });
 
-const openai = new OpenAIApi(configuration);
+const createCompletion = async (input) => {
+  try {
+    const response = await openai.post('/completions', { input });
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching completion:', error);
+    throw error;
+  }
+};
 
-export default openai;
+export default {
+  createCompletion,
+};
